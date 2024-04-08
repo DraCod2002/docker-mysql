@@ -27,21 +27,13 @@ services:
 
   mysql:
     image: mysql:latest
-    container_name: pedromysql  # Corrección: Nombre del contenedor debe ser diferente
+    container_name: pedromysql
     restart: unless-stopped
     env_file: .env
     environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_ROOT_PASSWORD=contraseña_super_secreta
       - MYSQL_DATABASE=$MYSQL_DATABASE
     volumes:
       - mysqldata:/var/lib/pedromysql
     networks:
       - app-network
-
-networks:
-  app-network:
-    driver: bridge
-
-volumes:
-  mysqldata:
-  node_modules:
